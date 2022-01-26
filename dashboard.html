@@ -93,7 +93,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink"
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="no-icon">Dropdown</span>
                             </a>
@@ -137,40 +137,46 @@
                                         <div class="formGroup">
                                             <label>ID</label> <span id="errorId" class="errorCheck"></span>
                                             <input class="form-control" type="text" name="productId" id="productId"
-                                                   placeholder="Enter Product ID" onkeyup="check()">
+                                                   placeholder="Enter Product ID" onkeyup="check()" required
+                                                   pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <label>Category Name</label> <span id="errorCategory"
                                                                                class="errorCheck"></span>
                                             <input class="form-control" type="text" name="category" id="category"
-                                                   placeholder="Enter Category Name" onkeyup="check()">
+                                                   placeholder="Enter Category Name" onkeyup="check()" required
+                                                   pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <label>Supplier</label> <span id="errorSupplier" class="errorCheck"></span>
                                             <input class="form-control" type="text" name="supplier" id="supplier"
-                                                   placeholder="Enter name of Supplier" onkeyup="check()">
+                                                   placeholder="Enter name of Supplier" onkeyup="check()" required
+                                                   pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <label>Product Name</label> <span id="errorProductName"
                                                                               class="errorCheck"></span>
                                             <input class="form-control" type="text" name="productName" id="productName"
-                                                   placeholder="Enter Product Name" onkeyup="check()">
+                                                   placeholder="Enter Product Name" onkeyup="check()" required
+                                                   pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <label>Number of Product</label> <span id="errorNumber"
                                                                                    class="errorCheck"></span>
                                             <input class="form-control" type="number" name="number" id="number"
-                                                   placeholder="Enter number of product" min="0" onkeyup="check()">
+                                                   placeholder="Enter number of product" min="0" onkeyup="check()"
+                                                   required pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <label>Price</label> <span id="errorPrice" class="errorCheck"></span>
                                             <input class="form-control" type="number" name="price" id="price"
-                                                   placeholder="Enter price of product" min="0" onkeyup="check()">
+                                                   placeholder="Enter price of product" min="0" onkeyup="check()"
+                                                   required pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <label>Image link</label> <span id="errorImage" class="errorCheck"></span>
                                             <input class="form-control" type="text" id="image" placeholder="Image link"
-                                                   onkeyup="check()">
+                                                   onkeyup="check()" required pattern="\S+"/>
                                         </div>
                                         <div class="formGroup">
                                             <button class="btn btn-primary" type="button" name="btnAddProduct"
@@ -206,7 +212,6 @@
                         </div>
                     </div>
                 </div>
-
                 <button class="custom-btn btn-9" id="myBtnInput">Input Stock</button>
                 <button class="custom-btn btn-9" id="myBtnOutput">Output Stock</button>
                 <!--Modal Input-->
@@ -216,28 +221,29 @@
                             <span class="close1">&times;</span>
                             <form method="post">
                                 <div class="formGroup">
+                                    <label>Product Name</label>
+                                    <select class="form-control" id="productSelectInput" onchange="changeProductsInput()">
+                                        <option value="">--- Choose ---</option>
+                                    </select>
+                                </div>
+                                <div class="formGroup">
                                     <label>ID</label>
-                                    <input class="form-control" type="text" name="productId"
-                                           placeholder="Enter Product ID">
+                                    <select class="form-control" id="idSelectInput" disabled>
+                                    </select>
                                 </div>
                                 <div class="formGroup">
                                     <label>Category Name</label>
-                                    <input class="form-control" type="text" name="category"
-                                           placeholder="Enter Category Name">
+                                    <select class="form-control" id="categorySelectInput" disabled>
+                                    </select>
                                 </div>
                                 <div class="formGroup">
                                     <label>Supplier</label>
-                                    <input class="form-control" type="text" name="supplier"
-                                           placeholder="Enter name of Supplier">
-                                </div>
-                                <div class="formGroup">
-                                    <label>Product Name</label>
-                                    <input class="form-control" type="text" name="productName"
-                                           placeholder="Enter Product Name">
+                                    <select class="form-control" id="supplierSelectInput" disabled>
+                                    </select>
                                 </div>
                                 <div class="formGroup">
                                     <label>Number of Product</label>
-                                    <input class="form-control" type="number" name="number"
+                                    <input class="form-control" type="number" name="number" id="numberInput"
                                            placeholder="Enter number of product"
                                            min="0">
                                 </div>
@@ -252,43 +258,45 @@
                 </div>
                 <!--end modal input-->
                 <!--start modal output-->
-
                 <div id="modalOutput" class="modal">
                     <div class="modal-content">
-<!--                        <form action="#">-->
-                            <span class="close2">&times;</span>
-                            <form method="post">
-                                <div class="formGroup">
-                                    <label>Product Name</label>
-                                    <select class="form-control" id="productSelect" onchange="changeProducts()">
-                                        <option value="">--- Choose ---</option>
-                                    </select>
-                                </div>
-                                <div class="formGroup">
-                                    <label>ID</label>
-                                    <input class="form-control" type="text" name="productId">
-                                </div>
-                                <div class="formGroup">
-                                    <label>Category Name</label>
-                                    <input class="form-control" type="text" name="category" id="categoryTag">
-                                </div>
-                                <div class="formGroup">
-                                    <label>Supplier</label>
-                                    <input class="form-control" type="text" name="supplier">
-                                </div>
+                        <!--                        <form action="#">-->
+                        <span class="close2">&times;</span>
+                        <form method="post">
+                            <div class="formGroup">
+                                <label>Product Name</label>
+                                <select class="form-control" id="productSelect" onchange="changeProducts()">
+                                    <option value="">--- Choose ---</option>
+                                </select>
+                            </div>
+                            <div class="formGroup">
+                                <label>ID</label>
+                                <select class="form-control" id="idSelect" disabled>
+                                </select>
+                            </div>
+                            <div class="formGroup">
+                                <label>Category Name</label>
+                                <select class="form-control" id="categorySelect" disabled>
+                                </select>
+                            </div>
+                            <div class="formGroup">
+                                <label>Supplier</label>
+                                <select class="form-control" id="supplierSelect" disabled>
+                                </select>
+                            </div>
 
-                                <div class="formGroup">
-                                    <label>Number of Product</label>
-                                    <input class="form-control" type="number" name="numberOutput" id="numberOutput"
-                                           placeholder="Enter number of product"
-                                           min="0">
-                                </div>
-                                <div class="formGroup">
-                                    <button class="btn btn-primary" type="button" onclick="updateOutput()">Confirm
-                                    </button>
-                                    <button class="btn btn-outline-primary">Reset</button>
-                                </div>
-                            </form>
+                            <div class="formGroup">
+                                <label>Number of Product</label>
+                                <input class="form-control" type="number" name="numberOutput" id="numberOutput"
+                                       placeholder="Enter number of product"
+                                       min="0">
+                            </div>
+                            <div class="formGroup">
+                                <button class="btn btn-primary" type="button" onclick="updateOutput()">Confirm
+                                </button>
+                                <button class="btn btn-outline-primary">Reset</button>
+                            </div>
+                        </form>
                         </form>
                     </div>
                 </div>
@@ -410,7 +418,9 @@
                     </li>
                     <li>
                         <a href="#">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9242911494894!2d105.76602881531392!3d21.035715092915854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1sen!2s!4v1643159291066!5m2!1sen!2s" width="300" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9242911494894!2d105.76602881531392!3d21.035715092915854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1sen!2s!4v1643159291066!5m2!1sen!2s"
+                                    width="300" height="100" style="border:0;" allowfullscreen=""
+                                    loading="lazy"></iframe>
                         </a>
                     </li>
                 </ul>
@@ -419,7 +429,7 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script>
-                    <a >Create by DƯƠNG ĐZ </a>, Love C1221H1
+                    <a>Create by DƯƠNG ĐZ </a>, Love C1221H1
                 </p>
             </nav>
         </div>

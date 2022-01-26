@@ -174,3 +174,15 @@ th, tr, td{
     inset -4px -4px 6px 0 rgba(255,255,255,.5),
     inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 }
+/* Show red borders when filled, but invalid */
+input:not(:placeholder-shown) {
+    border-color: hsl(0, 76%, 50%);
+}
+input:not(:placeholder-shown) {
+    border-color: hsl(0, 76%, 50%);;
+}
+
+/* Show green borders when valid */
+input:valid {
+    border-color: hsl(120, 76%, 50%);
+}
