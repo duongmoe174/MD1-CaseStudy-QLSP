@@ -92,6 +92,7 @@ function createNewProduct() {
         alert("Products already exist!")
     }
     showAllProduct();
+    localStorage.setItem("products", JSON.stringify(products));
     document.getElementById("productId").value = "";
     document.getElementById("category").value = "";
     document.getElementById("supplier").value = "";
@@ -114,8 +115,8 @@ function editProduct(index) {
     let newName = prompt("Enter the new Name", products[index].name);
     let newCategory = prompt("Enter the new Category", products[index].category);
     let newSupplier = prompt("Enter the new Supplier", products[index].supplier);
-    let newNumber = prompt("Enter the new Number of Product", products[index].number);
-    let newPrice = prompt("Enter the new Price", products[index].price);
+    let newNumber = +prompt("Enter the new Number of Product", products[index].number);
+    let newPrice = +prompt("Enter the new Price", products[index].price);
     products[index].id = newId;
     products[index].name = newName;
     products[index].category = newCategory;
