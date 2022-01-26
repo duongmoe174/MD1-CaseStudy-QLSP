@@ -12,20 +12,20 @@ class Product {
         this.status = status;
         this.image = image;
         if (this.number <= 0) {
-            this.status = "<span class='label label-danger'>Sold out</span>";
+            this.status = "<button disabled class='labelDanger'>Sold out</button>";
         }
         if (this.number > 0 && this.number < 5) {
-            this.status = "<span class='label label-warning'>Out soon</span>";
+            this.status = "<button disabled class='labelWarning'>Out soon</button>";
         }
         if (this.number > 5) {
-            this.status = "<span class='label label-success'>Stocking</span>";
+            this.status = "<button disabled class='labelSuccess'>Stocking</button>";
         }
     }
 }
 let products = [
-    new Product("1", "Whey Gold", "Whey Protein", "Optimum", "200", "10", "10", "10", "2000", "", ""),
-    new Product("2", "Whey Hydro", "Whey Protein", "Optimum", "100", "10", "10", "10", "2000", "", ""),
-    new Product("3", "Whey Blend", "Whey Protein", "Optimum", "0", "10", "10", "10", "2000", "", ""),
+    new Product("1", "Whey Gold", "Whey Protein", "Optimum", 200, 10, 10, 10, 2000, "", ""),
+    new Product("2", "Whey Hydro", "Whey Protein", "Optimum", 4, 10, 10, 10, 2000, "", ""),
+    new Product("3", "Whey Blend", "Whey Protein", "Optimum", 0, 10, 10, 10, 2000, "", ""),
 ];
 
 function showAllProduct() {
@@ -48,7 +48,7 @@ function showAllProduct() {
             "            <td>" + products[i].category + "</td>\n" +
             "            <td>" + products[i].supplier + "</td>\n" +
             "            <td>" + products[i].number + "</td>\n" +
-            "            <td>" + products[i].price + "</td>\n" +
+            "            <td>" + products[i].price.toLocaleString('vi-VN',{style:'currency',currency:'VND'})+ "</td>\n" +
             "            <td>" + products[i].status + "</td>\n" +
             "            <td><img width='80px' height='80px' src='" + products[i].image + "'></td>\n" +
             "            <td><button class='btn btn-info' onclick='editProduct(" + i + ")'>Edit</button></td>\n" +
@@ -84,8 +84,9 @@ function createNewProduct() {
 function deleteProduct(index) {
     products.splice(index, 1);
     showAllProduct();
+    showStockList();
 }
-showStockList();
+
 function editProduct(index) {
     let newId = prompt("Enter the new Id", products[index].id);
     let newName = prompt("Enter the new Name", products[index].name);
@@ -128,7 +129,7 @@ function findByName() {
             "            <td>" + newProducts[i].category + "</td>\n" +
             "            <td>" + newProducts[i].supplier + "</td>\n" +
             "            <td>" + newProducts[i].number + "</td>\n" +
-            "            <td>" + newProducts[i].price + "</td>\n" +
+            "            <td>" + newProducts[i].price.toLocaleString('vi-VN',{style:'currency',currency:'VND'})+ "</td>\n" +
             "            <td>" + newProducts[i].status + "</td>\n" +
             "            <td><img width='80px' height='80px' src='" + newProducts[i].image + "'></td>\n" +
             "            <td><button class='btn btn-info' onclick='editProduct(" + i + ")'>Edit</button></td>\n" +
@@ -201,13 +202,13 @@ function showStockList() {
             "                    <td>"+ products[i].name +"</td>\n" +
             "                    <td>"+ products[i].price +"</td>\n" +
             "                    <td>"+products[i].number+"</td>\n" +
-            "                    <td>"+total+"</td>\n" +
+            "                    <td>"+total.toLocaleString('vi-VN',{style:'currency',currency:'VND'})+"</td>\n" +
             "                    <td>"+products[i].numIP+"</td>\n" +
-            "                    <td>"+totalIP+"</td>\n" +
+            "                    <td>"+totalIP.toLocaleString('vi-VN',{style:'currency',currency:'VND'})+"</td>\n" +
             "                    <td>"+products[i].numOP+"</td>\n" +
-            "                    <td>"+totalOP+"</td>\n" +
+            "                    <td>"+totalOP.toLocaleString('vi-VN',{style:'currency',currency:'VND'})+"</td>\n" +
             "                    <td>"+products[i].numLP+"</td>\n" +
-            "                    <td>"+totalLP+"</td>\n" +
+            "                    <td>"+totalLP.toLocaleString('vi-VN',{style:'currency',currency:'VND'})+"</td>\n" +
             "                </tr>";
         content += temp;
     }
@@ -223,7 +224,7 @@ function loadStock () {
         }
 }
 loadStock();
-function changeProducts() {
+function changeProducts () {
 
 }
-
+changeProducts()
